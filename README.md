@@ -1,5 +1,7 @@
 # struct-db-postgres
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/go-phings/struct-db-postgres.svg)](https://pkg.go.dev/github.com/go-phings/struct-db-postgres) [![Go Report Card](https://goreportcard.com/badge/github.com/go-phings/struct-db-postgres)](https://goreportcard.com/report/github.com/go-phings/struct-db-postgres)
+
 Package `structdbpostgres` is meant to map structs to PostgreSQL tables (like ORM).
 
 ## Example usage

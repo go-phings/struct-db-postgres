@@ -25,6 +25,8 @@ github.com/docker/go-connections v0.5.0 h1:USnMq7hx7gwdVZq1L49hLXaFtUdTADjXGp+uj
 github.com/docker/go-connections v0.5.0/go.mod h1:ov60Kzw0kKElRwhNs9UlUHAE/F9Fe6GLaXnqyDdmEXc=
 github.com/docker/go-units v0.5.0 h1:69rxXcBk27SvSaaxTtLh/8llcHD8vYHT7WSdRZ/jvr4=
 github.com/docker/go-units v0.5.0/go.mod h1:fgPhTUdO+D/Jk86RDLlptpiXQzgHJF7gydDDbaIK4Dk=
+github.com/go-phings/struct-sql-postgres v0.6.0 h1:GvaiSnywCnA4RtRfQEkYOtNwnykKHW158if0Yoi8jCs=
+github.com/go-phings/struct-sql-postgres v0.6.0/go.mod h1:bII8gzJnuAn7Ht+NEmHnyieu53EYnHhGg5EeY893yeE=
 github.com/go-sql-driver/mysql v1.8.1 h1:LedoTUt/eveggdHS9qUFC1EFSa8bU2+1pZjSRpvNJ1Y=
 github.com/go-sql-driver/mysql v1.8.1/go.mod h1:wEBSXgmK//2ZFJyE+qWnIsVGmvmEKlqwuVSjsCm7DZg=
 github.com/gogo/protobuf v1.3.2 h1:Ov1cvc58UF3b5XjBnZv7+opcTcQFZebYjWzi34vdm4Q=
@@ -37,8 +39,6 @@ github.com/kisielk/errcheck v1.5.0/go.mod h1:pFxgyoBC7bSaBwPgfKdkLd5X25qrDl4LWUI
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
 github.com/lib/pq v1.10.9 h1:YXG7RB+JIjhP29X+OtkiDnYaXQwpS4JEWq7dtCCRUEw=
 github.com/lib/pq v1.10.9/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
-github.com/mikolajgs/prototyping v0.5.0 h1:+yHz+5jLB/cO/L50lq63Zv0sC0cupvwm4J2jPPEcvVQ=
-github.com/mikolajgs/prototyping v0.5.0/go.mod h1:BDOSGotFY1ev7rZgAuvC1hVURukK63EPAyyxIDX7Ql4=
 github.com/mikolajgs/struct-validator v0.4.7 h1:6kBLsnBqC5KQpwY07n3yiqFUK3hm+f4KuHcYSceN4kY=
 github.com/mikolajgs/struct-validator v0.4.7/go.mod h1:Ks0Lm870PpN0ZuQ+LDKYhCazSNyN3zvX5NrFxwlS69g=
 github.com/mitchellh/mapstructure v1.5.0 h1:jeMsZIYE/09sWLaz43PL7Gy6RuMjD2eJVyuac5Z2hdY=

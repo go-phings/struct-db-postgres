@@ -3,8 +3,8 @@ module github.com/go-phings/struct-db-postgres
 go 1.23.4
 
 require (
+	github.com/go-phings/struct-sql-postgres v0.6.0
 	github.com/lib/pq v1.10.9
-	github.com/mikolajgs/prototyping v0.5.0
 	github.com/mikolajgs/struct-validator v0.4.7
 	github.com/ory/dockertest/v3 v3.11.0
 )

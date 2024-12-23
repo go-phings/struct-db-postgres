@@ -3,7 +3,7 @@ package structdbpostgres
 import (
 	"database/sql"
 
-	stsql "github.com/mikolajgs/prototyping/pkg/struct-sql-postgres"
+	stsql "github.com/go-phings/struct-sql-postgres"
 )
 
 // Controller is the main component that gets and saves objects in the database.

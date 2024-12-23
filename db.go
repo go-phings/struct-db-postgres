@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"strconv"
 
-	stsql "github.com/mikolajgs/prototyping/pkg/struct-sql-postgres"
+	stsql "github.com/go-phings/struct-sql-postgres"
 )
 
 const RawConjuctionOR = 1

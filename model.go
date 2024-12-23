@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"sort"
 
-	stsql "github.com/mikolajgs/prototyping/pkg/struct-sql-postgres"
+	stsql "github.com/go-phings/struct-sql-postgres"
 )
 
 // GetObjIDInterface returns an interface{} to ID field of an object

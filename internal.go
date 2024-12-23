@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	stsql "github.com/mikolajgs/prototyping/pkg/struct-sql-postgres"
+	stsql "github.com/go-phings/struct-sql-postgres"
 )
 
 // getSQLGenerator returns a special StructSQL instance which reflects the struct type to get SQL queries etc.
