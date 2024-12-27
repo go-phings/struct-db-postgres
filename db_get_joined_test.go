@@ -48,15 +48,15 @@ func TestJoinedLoad(t *testing.T) {
 	p := &Product_WithDetails{}
 	err := testController.Load(p, fmt.Sprintf("%d", 6), LoadOptions{})
 	if err != nil {
-		t.Fatalf("Load failed to get data for struct with other joined structs: %s", err.Err.Error())
+		t.Fatalf("Load failed to get data for struct with other joined structs: %s", err.(ErrController).Err.Error())
 	}
 
 	if p.Name != "Product Name" || p.Price != 1234 || p.ProductKindID != 33 || p.ProductGrpID != 113 {
-		t.Fatalf("Load failed to set struct fields: %s", err.Err.Error())
+		t.Fatalf("Load failed to set struct fields: %s", err.(ErrController).Err.Error())
 	}
 
 	if p.ProductKind_Name != "Kind 1" || p.ProductGrp_Code != "GRP1" {
-		t.Fatalf("Load failed to set 'joined' fields: %s", err.Op)
+		t.Fatalf("Load failed to set 'joined' fields: %s", err.(ErrController).Op)
 	}
 }
 
@@ -76,13 +76,13 @@ func TestJoinedGet(t *testing.T) {
 		},
 	})
 	if err != nil {
-		t.Fatalf("Get failed to return list of joined structs: %s", err.Op)
+		t.Fatalf("Get failed to return list of joined structs: %s", err.(ErrController).Op)
 	}
 	if len(ps) != 1 {
 		t.Fatalf("Get failed to return list of joined structs, want %v, got %v", 1, len(ps))
 	}
 	if ps[0].(*Product_WithDetails).Name != "Product Name" || ps[0].(*Product_WithDetails).Price != 1234 || ps[0].(*Product_WithDetails).ProductKindID != 33 || ps[0].(*Product_WithDetails).ProductGrpID != 113 {
-		t.Fatalf("Load failed to set struct fields: %s", err.Op)
+		t.Fatalf("Load failed to set struct fields: %s", err.(ErrController).Op)
 	}
 	if ps[0].(*Product_WithDetails).ProductKind_Name != "Kind 1" || ps[0].(*Product_WithDetails).ProductGrp_Code != "GRP1" {
 		t.Fatalf("Get failed to return correct list of joined objects")
@@ -108,7 +108,7 @@ func TestJoinedGet(t *testing.T) {
 		},
 	})
 	if err != nil {
-		t.Fatalf("Get failed to return list of joined structs using raw filter: %s", err.Op)
+		t.Fatalf("Get failed to return list of joined structs using raw filter: %s", err.(ErrController).Op)
 	}
 	if len(ps) != 1 {
 		t.Fatalf("Get failed to return list of joined structs using raw filter, want %v, got %v", 1, len(ps))

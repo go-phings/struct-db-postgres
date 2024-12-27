@@ -40,7 +40,7 @@ func TestGet(t *testing.T) {
 		Filters: map[string]interface{}{"Price": 444, "PrimaryEmail": "primary@example.com"},
 	})
 	if err != nil {
-		t.Fatalf("Get failed to return list of objects: %s", err.Op)
+		t.Fatalf("Get failed to return list of objects: %s", err.(ErrController).Op)
 	}
 	if len(testStructs) != 10 {
 		t.Fatalf("Get failed to return list of objects, want %v, got %v", 10, len(testStructs))
@@ -71,7 +71,7 @@ func TestGetWithoutFilters(t *testing.T) {
 		Offset: 14,
 	})
 	if err != nil {
-		t.Fatalf("Get failed to return list of objects: %s", err.Op)
+		t.Fatalf("Get failed to return list of objects: %s", err.(ErrController).Op)
 	}
 	if len(testStructs) != 13 {
 		t.Fatalf("Get failed to return list of objects, want %v, got %v", 10, len(testStructs))
@@ -129,7 +129,7 @@ func TestGetWithRowObjTransformFunc(t *testing.T) {
 		},
 	})
 	if err != nil {
-		t.Fatalf("Get failed to return list of objects modified with transform func: %s", err.Op)
+		t.Fatalf("Get failed to return list of objects modified with transform func: %s", err.(ErrController).Op)
 	}
 	if len(testCustomList) != 2 {
 		t.Fatalf("Get with transform func returned invalid number of objects, wanted %d got %d", 2, len(testCustomList))

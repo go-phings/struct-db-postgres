@@ -17,10 +17,10 @@ func TestLoad(t *testing.T) {
 	ts2 := &TestStruct{}
 	err := testController.Load(ts2, fmt.Sprintf("%d", ts.ID), LoadOptions{})
 	if err != nil {
-		t.Fatalf("Load failed to get data: %s", err.Op)
+		t.Fatalf("Load failed to get data: %s", err.(ErrController).Op)
 	}
 
 	if !areTestStructObjectsSame(ts, ts2) {
-		t.Fatalf("Load failed to set struct with data: %s", err.Op)
+		t.Fatalf("Load failed to set struct with data: %s", err.(ErrController).Op)
 	}
 }

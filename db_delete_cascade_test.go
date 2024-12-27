@@ -96,7 +96,7 @@ func TestDeleteCascade(t *testing.T) {
 		},
 	})
 	if err1 != nil {
-		t.Fatalf("Failed to run Delete successfully: %s", err1.Err.Error())
+		t.Fatalf("Failed to run Delete successfully: %s", err1.(ErrController).Err.Error())
 	}
 
 	// Check things

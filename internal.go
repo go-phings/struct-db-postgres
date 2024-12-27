@@ -11,7 +11,7 @@ import (
 )
 
 // getSQLGenerator returns a special StructSQL instance which reflects the struct type to get SQL queries etc.
-func (c *Controller) getSQLGenerator(obj interface{}, generators map[string]*stsql.StructSQL, forceName string) (*stsql.StructSQL, *ErrController) {
+func (c *Controller) getSQLGenerator(obj interface{}, generators map[string]*stsql.StructSQL, forceName string) (*stsql.StructSQL, error) {
 	n := c.getSQLGeneratorName(obj, false)
 	if c.sqlGenerators[n] == nil {
 		h := stsql.NewStructSQL(obj, stsql.StructSQLOptions{
@@ -22,7 +22,7 @@ func (c *Controller) getSQLGenerator(obj interface{}, generators map[string]*sts
 			UseRootNameWhenJoinedPresent: true,
 		})
 		if h.Err() != nil {
-			return nil, &ErrController{
+			return nil, ErrController{
 				Op:  "GetHelper",
 				Err: fmt.Errorf("Error getting StructSQL: %w", h.Err()),
 			}
@@ -66,7 +66,7 @@ func (c Controller) mapWithInterfacesToMapBool(m map[string]interface{}) map[str
 	return o
 }
 
-func (c Controller) runOnDelete(obj interface{}, tagName string, ids []int64, lastDepth int) *ErrController {
+func (c Controller) runOnDelete(obj interface{}, tagName string, ids []int64, lastDepth int) error {
 	v := reflect.ValueOf(obj)
 	i := reflect.Indirect(v)
 	s := i.Type()
@@ -131,7 +131,7 @@ func (c Controller) runOnDelete(obj interface{}, tagName string, ids []int64, la
 				CascadeDeleteDepth: lastDepth + 1,
 			})
 			if errCtl != nil {
-				return &ErrController{
+				return ErrController{
 					Op:  "CascadeDelete",
 					Err: errors.New("Error from DeleteMultiple"),
 				}
@@ -143,7 +143,7 @@ func (c Controller) runOnDelete(obj interface{}, tagName string, ids []int64, la
 			updField := tagsMap["del_upd_field"]
 			updValue := tagsMap["del_upd_val"]
 			if updField == "" {
-				return &ErrController{
+				return ErrController{
 					Op:  "CascadeDelete",
 					Err: errors.New("missing update field in tags"),
 				}
@@ -168,7 +168,7 @@ func (c Controller) runOnDelete(obj interface{}, tagName string, ids []int64, la
 				},
 			)
 			if errCtl != nil {
-				return &ErrController{
+				return ErrController{
 					Op:  "CascadeDelete",
 					Err: errors.New("Error from UpdateMultiple"),
 				}
