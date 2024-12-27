@@ -10,7 +10,7 @@ func TestSave(t *testing.T) {
 	ts := getTestStructWithData()
 	err := testController.Save(ts, SaveOptions{})
 	if err != nil {
-		t.Fatalf("Save failed to insert struct to the table: %s", err.Op)
+		t.Fatalf("Save failed to insert struct to the table: %s", err.(ErrController).Op)
 	}
 
 	ts2 := &TestStruct{}
@@ -66,7 +66,7 @@ func TestSaveInsertWithID(t *testing.T) {
 	ts.FirstName = "ProvidedID"
 	err := testController.Save(ts, SaveOptions{})
 	if err != nil {
-		t.Fatalf("Save failed to insert struct with provided ID to the table: %s", err.Op)
+		t.Fatalf("Save failed to insert struct with provided ID to the table: %s", err.(ErrController).Op)
 	}
 
 	ts2 := &TestStruct{}
@@ -84,7 +84,7 @@ func TestSaveInsertWithID(t *testing.T) {
 	ts2.FirstName = "UpdatedProvidedID"
 	err = testController.Save(ts2, SaveOptions{})
 	if err != nil {
-		t.Fatalf("Save failed to update struct previously inserted with provided ID to the table: %s", err.Op)
+		t.Fatalf("Save failed to update struct previously inserted with provided ID to the table: %s", err.(ErrController).Op)
 	}
 
 	ts3 := &TestStruct{}
@@ -109,7 +109,7 @@ func TestSaveInsertWithIDAndNoInsert(t *testing.T) {
 		NoInsert: true,
 	})
 	if err != nil {
-		t.Fatalf("Save failed to not insert struct with provided ID to the table when NoInsert: %s", err.Op)
+		t.Fatalf("Save failed to not insert struct with provided ID to the table when NoInsert: %s", err.(ErrController).Op)
 	}
 
 	var cnt int

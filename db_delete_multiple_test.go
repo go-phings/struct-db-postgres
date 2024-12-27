@@ -30,7 +30,7 @@ func TestDeleteMultiple(t *testing.T) {
 		Filters: map[string]interface{}{"Price": 444, "PrimaryEmail": "primary@example.com"},
 	})
 	if err != nil {
-		t.Fatalf("DeleteMultiple failed to delete objects: %s", err.Op)
+		t.Fatalf("DeleteMultiple failed to delete objects: %s", err.(ErrController).Op)
 	}
 
 	cnt, _ := testController.GetCount(func() interface{} { return &TestStruct{} }, GetCountOptions{})
@@ -77,7 +77,7 @@ func TestDeleteMultipleWithRawQuery(t *testing.T) {
 		},
 	})
 	if err != nil {
-		t.Fatalf("DeleteMultiple failed to delete objects: %s", err.Op)
+		t.Fatalf("DeleteMultiple failed to delete objects: %s", err.(ErrController).Op)
 	}
 
 	cnt, _ := testController.GetCount(func() interface{} { return &TestStruct{} }, GetCountOptions{})
@@ -123,7 +123,7 @@ func TestDeleteMultipleWithRawQueryOnly(t *testing.T) {
 		},
 	})
 	if err != nil {
-		t.Fatalf("DeleteMultiple failed to delete objects: %s", err.Op)
+		t.Fatalf("DeleteMultiple failed to delete objects: %s", err.(ErrController).Op)
 	}
 
 	cnt, _ := testController.GetCount(func() interface{} { return &TestStruct{} }, GetCountOptions{})
